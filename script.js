@@ -4,23 +4,23 @@ let age = documet.getElementById('age');
 let name = documet.getElementById('name');
 let btn = documet.getElementById('btn');
 
-btn.addEventListener('click', display());
-
-
-function display(age) {
-	return new Promise((resolve) =>{
+function promise(name, age) {
+	return new Promise((resolve, reject) =>{
 		setTimeout(() =>{
-			resolve(age);
+			if(age > 18){
+				resolve(`welcome, ${name}. You can vote`);
+				
+			} else {
+				reject(`Oh sorry ${name}. You aren't old enough.`)
+			}
 		}, 4000);
 	});
 }
 
-display(age)
-.then((res) =>{
-	const age1 = age.innerText;
-	if(age1 > 18){
-		return `welcome, ${name}. You can vote`
+btn.addEventListener('click', function(){
+	if(name === "" && age === ""){
+		alert("Please enter valid details"))
 	} else {
-		re
+		promise(name, age);
 	}
-})
+});
